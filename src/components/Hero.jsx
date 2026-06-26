@@ -108,10 +108,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-base md:text-lg text-white/60 max-w-lg mb-10 leading-relaxed"
           >
-            Full-Stack Software Engineer with <span className="text-white font-medium">2+ years</span> delivering{' '}
-            <span className="text-white font-medium">12+ production-grade</span> web apps end-to-end — scalable CRM systems, 
-            high-performance <span className="text-white font-medium">Next.js</span> frontends, and robust{' '}
-            <span className="text-white font-medium">Node.js</span> backends — for global clients across Australia, USA, India & Saudi Arabia.
+            Full-Stack Developer building <span className="text-white font-medium">real booking websites</span> and web apps
+            that businesses actually run on — from <span className="text-white font-medium">taxi &amp; event platforms</span> in
+            Saudi Arabia to custom CRM dashboards. <span className="text-white font-medium">2+ years</span>,{' '}
+            <span className="text-white font-medium">12+ projects</span> shipped end-to-end with React, Next.js &amp; Node.js —
+            ready to build for your team or your business.
           </motion.p>
 
           <motion.div
@@ -126,10 +127,10 @@ const Hero = () => {
               className="group px-8 py-4 bg-white text-black rounded-full font-semibold text-sm tracking-wide hover:scale-105 hover:shadow-[0_10px_40px_rgba(255,255,255,0.2)] transition-all duration-300 relative overflow-hidden"
               id="view-work-btn"
             >
-              <span className="relative z-10">View My Work →</span>
+              <span className="relative z-10">See My Work →</span>
               <div className="absolute inset-0 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               <span className="absolute inset-0 flex items-center justify-center text-white font-semibold text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 z-20">
-                View My Work →
+                See My Work →
               </span>
             </button>
 
@@ -139,7 +140,7 @@ const Hero = () => {
               className="px-8 py-4 rounded-full font-semibold text-sm tracking-wide glass-dark hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
               id="contact-me-btn"
             >
-              Get In Touch
+              Hire Me
             </button>
           </motion.div>
 
