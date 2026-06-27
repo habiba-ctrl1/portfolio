@@ -143,9 +143,13 @@ const Process = () => {
     <section
       id="process"
       ref={sectionRef}
-      className="relative bg-white grid-pattern py-24 md:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: 'url("/images/coding.jpg")' }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Parallax Overlay */}
+      <div className="absolute inset-0 bg-white/85 z-0" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20 md:mb-28">
           <motion.div
