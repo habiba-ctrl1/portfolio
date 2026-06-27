@@ -1,8 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiChevronDown } from 'react-icons/fi';
 
 const Hero = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const handleInteraction = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        videoRef.current.play().catch(e => console.log("Play error:", e));
+      }
+    };
+    
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+    window.addEventListener('scroll', handleInteraction, { once: true });
+    
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('scroll', handleInteraction);
+    };
+  }, []);
+
   const scrollToWork = () => {
     const el = document.getElementById('projects');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -21,6 +41,7 @@ const Hero = () => {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           src="/videos/Habiba_sharing_work_and_connecting_202606271242.mp4"
           autoPlay
           loop
