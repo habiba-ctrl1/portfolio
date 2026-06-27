@@ -1,23 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiPlay, FiPause, FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 const Hero = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef(null);
-
-  const togglePlayback = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
-
   const scrollToWork = () => {
     const el = document.getElementById('projects');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -36,14 +21,13 @@ const Hero = () => {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
-          ref={videoRef}
+          src="/videos/Habiba_sharing_work_and_connecting_202606271242.mp4"
+          autoPlay
           loop
+          muted
           playsInline
-          className="w-full h-full object-cover"
-          poster="/images/hero-image-1.png"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/65 z-[1]" />
         {/* Bottom gradient */}
@@ -166,48 +150,6 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right Side - Play Reel Button */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="flex flex-col items-center gap-4"
-        >
-          <button
-            onClick={togglePlayback}
-            className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full glass-dark flex items-center justify-center transition-all duration-500 hover:scale-110 hover:shadow-[0_0_60px_rgba(255,42,42,0.4)]"
-            id="play-reel-btn"
-          >
-            {/* Animated rotating ring */}
-            <motion.div
-              className="absolute inset-0 rounded-full border border-white/20 group-hover:border-primary/50 transition-colors duration-500"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              style={{
-                borderStyle: 'dashed',
-                borderWidth: '1px',
-              }}
-            />
-            <div className="absolute inset-3 rounded-full border border-white/10 group-hover:border-primary/30 transition-colors duration-500" />
-
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: 'radial-gradient(circle, rgba(255,42,42,0.15) 0%, transparent 70%)',
-              }}
-            />
-
-            {/* Icon */}
-            {isPlaying ? (
-              <FiPause className="text-3xl md:text-4xl text-white relative z-10" />
-            ) : (
-              <FiPlay className="text-3xl md:text-4xl text-white ml-1 relative z-10" />
-            )}
-          </button>
-          <span className="text-xs uppercase tracking-[0.3em] text-white/40 font-mono">
-            {isPlaying ? 'PAUSE' : 'PLAY REEL'}
-          </span>
-        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
