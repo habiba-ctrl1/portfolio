@@ -1,27 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown, FiVolume2, FiVolumeX } from 'react-icons/fi';
 
 const Hero = () => {
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const handleInteraction = () => {
-      if (videoRef.current && videoRef.current.paused) {
-        videoRef.current.play().catch(e => console.log("Play error:", e));
-      }
-    };
-    
-    window.addEventListener('click', handleInteraction);
-    window.addEventListener('touchstart', handleInteraction);
-    window.addEventListener('scroll', handleInteraction, { once: true });
-    
-    return () => {
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
-    };
-  }, []);
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
 
   const scrollToWork = () => {
     const el = document.getElementById('projects');
@@ -46,6 +33,7 @@ const Hero = () => {
           autoPlay
           loop
           playsInline
+          muted={isMuted}
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Dark overlay */}
@@ -173,7 +161,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="hidden md:block absolute bottom-8 left-1/2 bounce-arrow z-10">
+      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 bounce-arrow z-10">
         <div className="flex flex-col items-center gap-2">
           <span className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-mono">
             Scroll
@@ -181,6 +169,15 @@ const Hero = () => {
           <FiChevronDown className="text-white/30 text-xl" />
         </div>
       </div>
+
+      {/* Mute Toggle Button */}
+      <button 
+        onClick={toggleMute}
+        className="absolute bottom-8 right-8 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-sm border border-white/10 text-white transition-all duration-300 group shadow-lg"
+        aria-label="Toggle Sound"
+      >
+        {isMuted ? <FiVolumeX className="text-xl group-hover:scale-110 transition-transform" /> : <FiVolume2 className="text-xl group-hover:scale-110 transition-transform" />}
+      </button>
     </section>
   );
 };
