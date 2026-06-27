@@ -24,7 +24,6 @@ const Hero = () => {
           src="/videos/Habiba_sharing_work_and_connecting_202606271242.mp4"
           autoPlay
           loop
-          muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover object-center"
         />

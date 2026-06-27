@@ -85,7 +85,7 @@ const About = () => {
                   {/* Profile Image */}
                   <div className="w-40 h-48 md:w-48 md:h-56 mx-auto rounded-xl overflow-hidden mb-6 border-2 border-white/10 shadow-xl">
                     <img
-                      src="/images/hero-image-2.png"
+                      src="/images/Habibaa.webp"
                       alt="Habiba Asghar - Full Stack Developer"
                       className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700"
                     />
